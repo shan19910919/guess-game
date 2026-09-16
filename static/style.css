@@ -1,0 +1,544 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        "Microsoft JhengHei",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f8fafc
+        );
+
+    color: #1e293b;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+
+.game-card {
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 24px;
+
+    padding: 36px;
+
+    box-shadow:
+        0 20px 60px rgba(15, 23, 42, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    transition: 0.3s ease;
+}
+
+
+/* 標題 */
+
+.game-header {
+    text-align: center;
+
+    margin-bottom: 32px;
+}
+
+
+.icon {
+    font-size: 52px;
+
+    margin-bottom: 12px;
+}
+
+
+.game-header h1 {
+    font-size: 32px;
+
+    margin-bottom: 10px;
+
+    color: #0f172a;
+}
+
+
+.game-header p {
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+
+/* 設定區 */
+
+.settings-section {
+    margin-bottom: 28px;
+}
+
+
+.settings-section h2 {
+    font-size: 20px;
+
+    margin-bottom: 18px;
+}
+
+
+.range-inputs {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.input-group {
+    flex: 1;
+}
+
+
+.input-group label,
+.guess-area label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #475569;
+}
+
+
+.input-group input,
+.guess-input-row input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+
+    background: #ffffff;
+}
+
+
+.input-group input:focus,
+.guess-input-row input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+.range-separator {
+    font-size: 24px;
+
+    padding-bottom: 12px;
+
+    color: #64748b;
+}
+
+
+/* 按鈕 */
+
+.button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+
+.button:active {
+    transform: translateY(0);
+}
+
+
+.primary-button {
+    width: 100%;
+
+    background: #6366f1;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+.primary-button:hover {
+    background: #4f46e5;
+}
+
+
+/* 遊戲區 */
+
+.game-section {
+    border-top: 1px solid #e2e8f0;
+
+    padding-top: 28px;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.game-status {
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+
+.status-label {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+
+.hint-range {
+    font-size: 30px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
+}
+
+
+/* 猜測 */
+
+.guess-area {
+    margin-bottom: 20px;
+}
+
+
+.guess-input-row {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.guess-input-row input {
+    flex: 1;
+}
+
+
+.guess-button {
+    background: #0f172a;
+
+    color: white;
+
+    min-width: 90px;
+}
+
+
+.guess-button:hover {
+    background: #1e293b;
+}
+
+
+/* 訊息 */
+
+.message {
+    min-height: 52px;
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 16px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #f8fafc;
+
+    color: #475569;
+}
+
+
+.message.small {
+    background: #fff7ed;
+
+    color: #c2410c;
+}
+
+
+.message.large {
+    background: #eff6ff;
+
+    color: #1d4ed8;
+}
+
+
+/* 猜測次數 */
+
+.attempts {
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    margin-bottom: 24px;
+}
+
+
+.attempts strong {
+    color: #0f172a;
+
+    font-size: 18px;
+}
+
+
+/* 成功 */
+
+.success-box {
+    text-align: center;
+
+    padding: 28px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ecfdf5,
+            #f0fdf4
+        );
+
+    border: 2px solid #86efac;
+
+    border-radius: 18px;
+
+    animation:
+        successPop 0.45s ease;
+}
+
+
+.success-icon {
+    font-size: 58px;
+
+    margin-bottom: 8px;
+
+    animation:
+        celebrate 0.8s ease;
+}
+
+
+.success-box h2 {
+    color: #15803d;
+
+    font-size: 28px;
+
+    margin-bottom: 12px;
+}
+
+
+.success-box p {
+    color: #166534;
+
+    margin-bottom: 8px;
+
+    font-size: 16px;
+}
+
+
+.success-box strong {
+    font-size: 20px;
+}
+
+
+.renew-button {
+    margin-top: 18px;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding-left: 32px;
+
+    padding-right: 32px;
+
+    box-shadow:
+        0 8px 20px rgba(22, 163, 74, 0.25);
+}
+
+
+.renew-button:hover {
+    background: #15803d;
+}
+
+
+/* Footer */
+
+.game-footer {
+    text-align: center;
+
+    margin-top: 24px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+/* 動畫 */
+
+@keyframes successPop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.9)
+            translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+@keyframes celebrate {
+
+    0% {
+        transform: scale(0.5) rotate(-15deg);
+
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.2) rotate(8deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+/* 手機 */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 14px;
+    }
+
+
+    .game-card {
+        padding: 24px 18px;
+
+        border-radius: 20px;
+    }
+
+
+    .game-header h1 {
+        font-size: 27px;
+    }
+
+
+    .icon {
+        font-size: 44px;
+    }
+
+
+    .range-inputs {
+        gap: 8px;
+    }
+
+
+    .range-separator {
+        font-size: 20px;
+    }
+
+
+    .input-group input,
+    .guess-input-row input {
+        padding: 12px;
+
+        font-size: 16px;
+    }
+
+
+    .guess-input-row {
+        flex-direction: column;
+    }
+
+
+    .guess-button {
+        width: 100%;
+    }
+
+
+    .hint-range {
+        font-size: 26px;
+    }
+
+}

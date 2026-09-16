@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>🎯 猜數字小遊戲</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="game-card">
+
+            <header class="game-header">
+                <div class="icon">🎯</div>
+
+                <h1>猜數字小遊戲</h1>
+
+                <p>
+                    設定範圍，看看你能幾次猜中答案！
+                </p>
+            </header>
+
+
+            <!-- 設定範圍 -->
+            <section class="settings-section">
+
+                <h2>遊戲設定</h2>
+
+                <div class="range-inputs">
+
+                    <div class="input-group">
+                        <label for="minNumber">
+                            最小值
+                        </label>
+
+                        <input
+                            type="number"
+                            id="minNumber"
+                            min="1"
+                            max="9999"
+                            value="1"
+                        >
+                    </div>
+
+
+                    <div class="range-separator">
+                        ～ 
+                    </div>
+
+
+                    <div class="input-group">
+                        <label for="maxNumber">
+                            最大值
+                        </label>
+
+                        <input
+                            type="number"
+                            id="maxNumber"
+                            min="2"
+                            max="10000"
+                            value="100"
+                        >
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="startButton"
+                    class="button primary-button"
+                >
+                    開始遊戲
+                </button>
+
+            </section>
+
+
+            <!-- 遊戲區 -->
+            <section
+                id="gameSection"
+                class="game-section hidden"
+            >
+
+                <div class="game-status">
+
+                    <div class="status-label">
+                        目前提示範圍
+                    </div>
+
+                    <div
+                        id="hintRange"
+                        class="hint-range"
+                    >
+                        1 ～ 100
+                    </div>
+
+                </div>
+
+
+                <div class="guess-area">
+
+                    <label for="guessInput">
+                        請輸入你的答案
+                    </label>
+
+                    <div class="guess-input-row">
+
+                        <input
+                            type="number"
+                            id="guessInput"
+                            placeholder="輸入數字"
+                            autocomplete="off"
+                        >
+
+                        <button
+                            id="guessButton"
+                            class="button guess-button"
+                        >
+                            猜測
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+
+                <div class="attempts">
+                    猜測次數：
+                    <strong id="attemptCount">0</strong>
+                </div>
+
+
+                <!-- 勝利畫面 -->
+                <div
+                    id="successBox"
+                    class="success-box hidden"
+                >
+
+                    <div class="success-icon">
+                        🎉
+                    </div>
+
+                    <h2>
+                        你中獎了！
+                    </h2>
+
+                    <p>
+                        正確答案是
+                        <strong id="correctAnswer"></strong>
+                    </p>
+
+                    <p>
+                        總共猜了
+                        <strong id="finalAttempts"></strong>
+                        次
+                    </p>
+
+                    <button
+                        id="renewButton"
+                        class="button renew-button"
+                    >
+                        🔄 Renew
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <footer class="game-footer">
+                <p>
+                    最小值：1　｜　最大值：10,000
+                </p>
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+</html>
